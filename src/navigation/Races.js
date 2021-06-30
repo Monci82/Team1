@@ -22,10 +22,8 @@ export default class Races extends React.Component{
     render (){
         console.log(this.state.races)
         return(
-    
             <div className="mainScreen">
                 <table>
-                    <h1>Naslov neki Sanja</h1>
                     <thead>
                         <tr>
                             <th colSpan="4">Race Calendar</th>
