@@ -7,6 +7,7 @@ export default class Home extends React.Component{
                 <h1>WELCOME</h1>
                 <h1>F1 CHAMPIONSHIP</h1>
                 <h5>DzINX</h5>
+                <h1>Naslov za proveru</h1>
             </div>
         )
     }
