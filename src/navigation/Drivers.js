@@ -39,9 +39,7 @@ export default class Drivers extends React.Component {
         });
 
     }
-    driverDetails() {
-
-        
+    driverDetails() { 
         console.log("from driverDetails");
     }
 
