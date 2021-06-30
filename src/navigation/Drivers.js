@@ -1,7 +1,10 @@
 import React from "react";
 import * as $ from "jquery";
 import {Link} from "react-router-dom";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3bb633fd1c2296409160f76975387749748031c1
 
 
 export default class Drivers extends React.Component {
@@ -15,9 +18,6 @@ export default class Drivers extends React.Component {
 
         this.driverDetails = this.driverDetails.bind(this);
     }
-
-
-
 
     componentDidMount() {
         this.getPosts();
@@ -53,7 +53,7 @@ export default class Drivers extends React.Component {
 
         return (
             <div className="mainScreen">
-                <h1>DA VIDIMO PROLAZE LI PROMENE ;)</h1>
+               
                 <table>
                     <thead>
                         <tr>

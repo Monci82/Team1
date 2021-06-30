@@ -1,5 +1,6 @@
 import React from "react";
 
+<<<<<<< HEAD
 
 export default class DriverDetails extends React.Component {
 constructor(){
@@ -25,4 +26,20 @@ render(){
 
 
 
+=======
+export default class DriverDetails extends React.Component{
+
+
+    componentDidMount(){
+        
+        console.log(this.props.match.params.id);
+    }
+    render(){
+        return(
+            <div>
+<h1>PROMENA</h1>
+            </div>
+        )
+    }
+>>>>>>> 3bb633fd1c2296409160f76975387749748031c1
 }
