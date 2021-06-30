@@ -5,6 +5,7 @@ import Home from "./navigation/Home";
 import Drivers from "./navigation/Drivers";
 import Races from "./navigation/Races";
 import Teames from "./navigation/Teams";
+import DriverDetails from "./navigation/DriverDetails";
 
 
 
@@ -26,6 +27,7 @@ export default class App extends React.Component{
                         <Switch>
                             <Route path="/" exact component={Home}/>
                             <Route path="/drivers" exact component={Drivers} />
+                            <Route path ="/driverDetails/:id" exact component={DriverDetails} />
                             <Route path="/teams" exact component={Teames} />
                             <Route path="/races" exact component={Races} />
                         </Switch>

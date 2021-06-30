@@ -1,5 +1,6 @@
 import React from "react";
 import * as $ from "jquery";
+import {Link} from "react-router-dom";
 
 
 export default class Drivers extends React.Component {
@@ -13,9 +14,6 @@ export default class Drivers extends React.Component {
 
         this.driverDetails = this.driverDetails.bind(this);
     }
-
-
-
 
     componentDidMount() {
         this.getPosts();
@@ -51,7 +49,7 @@ export default class Drivers extends React.Component {
 
         return (
             <div className="mainScreen">
-                <h1>DA VIDIMO PROLAZE LI PROMENE ;)</h1>
+               
                 <table>
                     <thead>
                         <tr>
@@ -63,7 +61,7 @@ export default class Drivers extends React.Component {
                             return (
                                 <tr key={i}>
                                     <td>{item.position}</td>
-                                    <td onClick={this.driverDetails}>{item.Driver.givenName + " " + item.Driver.familyName}</td>
+                                    <td><Link to={`/driverDetails/${item.Driver.driverId}`}>{item.Driver.givenName + " " + item.Driver.familyName}</Link></td>
                                     <td>{item.Constructors[0].name}</td>
                                     <td>{item.points}</td>
                                 </tr>
