@@ -1,10 +1,7 @@
 import React from "react";
 import * as $ from "jquery";
 import {Link} from "react-router-dom";
-<<<<<<< HEAD
 
-=======
->>>>>>> 3bb633fd1c2296409160f76975387749748031c1
 
 
 export default class Drivers extends React.Component {
