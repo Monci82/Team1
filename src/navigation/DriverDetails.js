@@ -10,7 +10,7 @@ export default class DriverDetails extends React.Component{
     render(){
         return(
             <div>
-
+<h1>PROMENA</h1>
             </div>
         )
     }
