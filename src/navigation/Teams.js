@@ -2,12 +2,14 @@ import React from "react";
 import * as $ from "jquery";
 import { timesSeries } from "async";
 import { Link } from "react-router-dom";
+import Flag from "react-flagkit";
 
 export default class Teames extends React.Component {
   constructor() {
     super();
     this.state = {
       teamsState: [],
+      flags: []
     };
   }
   componentDidMount() {
@@ -15,14 +17,19 @@ export default class Teames extends React.Component {
   }
 
   getTeamPosts() {
-    var url = "http://ergast.com/api/f1/2013/constructorStandings.json";
-    $.get(url, (data) => {
-      console.log(data);
+    var url = $.ajax("http://ergast.com/api/f1/2013/constructorStandings.json");
+    var urlFlags = $.ajax("https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json");
+    $.when(url, urlFlags).done(function (data1, data2) {
+      console.log("data1", data1);
+      console.log("data2", data2[0]);
+      var flags = JSON.parse(data2[0]);
       this.setState({
         teamsState:
-          data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
+          data1[0].MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
+        flags: flags
       });
-    });
+    }.bind(this));
+
   }
 
   render() {
@@ -32,7 +39,7 @@ export default class Teames extends React.Component {
         <table>
           <thead>
             <tr>
-              <th colSpan="4">Constructors Championshim Standings -2013</th>
+              <th colSpan="5">Constructors Championshim Standings -2013</th>
             </tr>
           </thead>
           <tbody>
@@ -40,6 +47,24 @@ export default class Teames extends React.Component {
               return (
                 <tr key={i}>
                   <td>{item.position}</td>
+                  {this.state.flags.map((flag, i) =>{
+
+if(item.Constructor.nationality === flag.nationality){
+    return(
+       <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+    )
+}
+if(item.Constructor.nationality === "British" && flag.nationality === "British, UK"){
+    return(
+       <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+    )
+}
+if(item.Constructor.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic"){
+    return(
+       <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+    )
+} 
+})}
                   <td>
                     <Link to={`/TeamDetails/${item.Constructor.constructorId}`}>
                       {item.Constructor.name}

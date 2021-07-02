@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import Teams from "./Teams";
 import * as $ from "jquery";
+import Flag from "react-flagkit";
 
 export default class TeamDetails extends Component {
   constructor() {
@@ -8,17 +9,10 @@ export default class TeamDetails extends Component {
     this.state = {
       results: [],
       teamDetails: [],
+      flags: [],
       isLoading: true,
     };
   }
-
-  // getTeamProfileDetails(idTeam) {
-  //   var url = `https://ergast.com/api/f1/2013/constructors/${idTeam}/results.json`;
-
-  //   $.get(url, (data) => {
-  //     console.log(data);
-  //   });
-  // }
 
   getTeamProfileDetails(idTeam) {
     var urlResults = $.ajax(
@@ -27,16 +21,19 @@ export default class TeamDetails extends Component {
     var urlTeamDetails = $.ajax(
       `http://ergast.com/api/f1/2013/constructors/${idTeam}/constructorStandings.json`
     );
+    var urlFlags = $.ajax("https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json");
 
-    $.when(urlResults, urlTeamDetails).done(
-      function (data1, data2) {
+    $.when(urlResults, urlTeamDetails, urlFlags).done(
+      function (data1, data2, data3) {
         console.log("data1", data1);
         console.log("data2", data2);
+        var flags = JSON.parse(data3[0]);
         this.setState({
           results: data1[0].MRData.RaceTable.Races,
           teamDetails:
             data2[0].MRData.StandingsTable.StandingsLists[0]
               .ConstructorStandings[0],
+          flags: flags,
           isLoading: false,
         });
       }.bind(this)
@@ -63,7 +60,21 @@ export default class TeamDetails extends Component {
           <div className="driversImg">
             <img src="" alt="drivers image" />
             <div>
-              <div className="flag"></div>
+              <div className="flag">
+                {this.state.flags.map((flag, i) => {
+
+                  if (this.state.teamDetails.Constructor.nationality === flag.nationality) {
+                    return (
+                      <Flag key={i} country={flag.alpha_2_code} />
+                    )
+                  }
+                  if (this.state.teamDetails.Constructor.nationality === "British" && flag.nationality === "British, UK") {
+                    return (
+                      <Flag key={i} country={flag.alpha_2_code} />
+                    )
+                  }
+                })}
+              </div>
 
               <p>{this.state.teamDetails.Constructor.name}</p>
             </div>
