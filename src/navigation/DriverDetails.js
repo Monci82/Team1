@@ -125,38 +125,35 @@ export default class DriverDetails extends React.Component {
                                 return (
                                     <tr key={i}>
                                         <td>{item.round}</td>
-                             {/* UBACITI IF ZA ZASTAVE */}
+                            {/* IF ZASTAVE POČETAK */}
                                         {this.state.flags.map((flag, i) => {
-
-                                            // if (item.Circuit.Location.country === flag.en_short_name) {
-                                            //     return (
-                                            //         <td key={i}><Flag country={flag.alpha_2_code} /></td>
-                                            //     )
-                                            // }
                                            
-                                            // if ((item.Circuit.Location.country).length === 3){
-                                            //     if(item.Circuit.Location.country ===  flag.alpha_3_code)
-                                            //     return(
-                                            //         <td key={i}><Flag country={flag.alpha_2_code} /></td>
-                                            //     )
-                                            // }
-                                     //POKUŠAJ SWITCHa       
-                                            // switch (item.Circuit.Location.country) {
-                                            //     case "USA":
-                                            //         <td key={i}><Flag country="US" /> </td>
-                                            //         break ;
-                                                
-                                            //     default:
-                                            //         if (item.Circuit.Location.country === flag.en_short_name) {
-                                            //                 return (
-                                            //                     <td key={i}><Flag country={flag.alpha_2_code} /></td>
-                                            //                 )
-                                            //             }
-                                            //         break;
-                                            // }
+                                            if (item.Circuit.Location.country === flag.en_short_name) {
+                                                return (
+                                                    <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                )
+                                            }
+                                           if(item.Circuit.Location.country === "UK" && flag.nationality==="British, UK"){
+                                               return(
+                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               )
                                             
-                                        
+                                           }
+                                           if(item.Circuit.Location.country === "Korea" && flag.nationality==="South Korean"){
+                                            return(
+                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               )
+                                           }
+                                           if(item.Circuit.Location.country === "UAE" && flag.nationality==="Emirati, Emirian, Emiri"){
+                                            return(
+                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               )
+                                           }
+                                           if(item.Circuit.Location.country === "USA" && flag.en_short_name==="United States of America"){
+                                               return(<td key={i}><Flag country={flag.alpha_2_code} /></td>)
+                                           }
                                         })}
+                     {/*IF ZASTAVE KRAJ  */}
                                         <td>{item.raceName}</td>
                                         <td>{item.Results[0].Constructor.name}</td>
                                         <td>{item.Results[0].grid}</td>

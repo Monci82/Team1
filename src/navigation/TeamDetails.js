@@ -108,7 +108,7 @@ export default class TeamDetails extends Component {
           <table>
             <thead>
               <tr>
-                <th colSpan="5">Formula 1 2013 Results</th>
+                <th colSpan="6">Formula 1 2013 Results</th>
               </tr>
               <tr>
                 <th>Round</th>
@@ -123,6 +123,33 @@ export default class TeamDetails extends Component {
                 return (
                   <tr key={i}>
                     <td>{item.round}</td>
+                    {this.state.flags.map((flag, i) => {
+
+                      if (item.Circuit.Location.country === flag.en_short_name) {
+                        return (
+                          <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                        )
+                      }
+                      if (item.Circuit.Location.country === "UK" && flag.nationality === "British, UK") {
+                        return (
+                          <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                        )
+
+                      }
+                      if (item.Circuit.Location.country === "Korea" && flag.nationality === "South Korean") {
+                        return (
+                          <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                        )
+                      }
+                      if (item.Circuit.Location.country === "UAE" && flag.nationality === "Emirati, Emirian, Emiri") {
+                        return (
+                          <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                        )
+                      }
+                      if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                        return (<td key={i}><Flag country={flag.alpha_2_code} /></td>)
+                      }
+                    })}
                     <td>{item.Circuit.circuitName}</td>
                     <td>{item.Results[0].position}</td>
                     <td>{item.Results[1].position}</td>

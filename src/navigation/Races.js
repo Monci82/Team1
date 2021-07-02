@@ -46,7 +46,33 @@ export default class Races extends React.Component {
                             return (
                                 <tr key={i}>
                                     <td>{item.round}</td>
-                                    <td>ZASTAVA</td>
+                                    {this.state.flags.map((flag, i) => {
+                                           
+                                           if (item.Circuit.Location.country === flag.en_short_name) {
+                                               return (
+                                                   <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               )
+                                           }
+                                          if(item.Circuit.Location.country === "UK" && flag.nationality==="British, UK"){
+                                              return(
+                                               <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                              )
+                                           
+                                          }
+                                          if(item.Circuit.Location.country === "Korea" && flag.nationality==="South Korean"){
+                                           return(
+                                               <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                              )
+                                          }
+                                          if(item.Circuit.Location.country === "UAE" && flag.nationality==="Emirati, Emirian, Emiri"){
+                                           return(
+                                               <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                              )
+                                          }
+                                          if(item.Circuit.Location.country === "USA" && flag.en_short_name==="United States of America"){
+                                              return(<td key={i}><Flag country={flag.alpha_2_code} /></td>)
+                                          }
+                                       })}
                                     <td><Link to={`/RacesDetails/${item.round}`}>{item.raceName}</Link></td>
                                     <td>{item.Circuit.circuitName}</td>
                                     <td>{item.date}</td>
