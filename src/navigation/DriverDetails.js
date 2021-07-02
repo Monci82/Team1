@@ -1,5 +1,6 @@
 import React from "react";
 import * as $ from "jquery";
+import Flag from "react-flagkit";
 
 export default class DriverDetails extends React.Component {
     constructor() {
@@ -7,6 +8,7 @@ export default class DriverDetails extends React.Component {
         this.state = {
             driverProfile: [],
             driversRaces: [],
+            flags: [],
             isLoading: true
         }
 
@@ -22,16 +24,18 @@ export default class DriverDetails extends React.Component {
 
         var urlDriversProfile = $.ajax(`http://ergast.com/api/f1/2013/drivers/${id}/driverStandings.json`);
         var urlRaces = $.ajax(`http://ergast.com/api/f1/2013/drivers/${id}/results.json`);
+        var urlFlags = $.ajax("https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json");
 
 
-
-        $.when(urlDriversProfile, urlRaces).done(function (data1, data2) {
+        $.when(urlDriversProfile, urlRaces, urlFlags).done(function (data1, data2, data3) {
 
             console.log("data1", data1);
             console.log("data2", data2);
+            var flags = JSON.parse(data3[0]);
             this.setState({
                 driverProfile: data1[0].MRData.StandingsTable.StandingsLists[0].DriverStandings[0],
                 driversRaces: data2[0].MRData.RaceTable.Races,
+                flags: flags,
                 isLoading: false
             });
 
@@ -46,7 +50,7 @@ export default class DriverDetails extends React.Component {
         }
         console.log(this.state.driverProfile);
         console.log(this.state.driversRaces);
-        
+
 
         return (
             <div>
@@ -54,16 +58,30 @@ export default class DriverDetails extends React.Component {
                     <div className="driversImg">
                         <img src="" alt="drivers image" />
                         <div>
-                        <div className="flag"></div>
-                        
-                        <p>{this.state.driverProfile.Driver.givenName}</p>
-                        <p>{this.state.driverProfile.Driver.familyName}</p>
-                       
+                            <div className="flag">
+                                {this.state.flags.map((flag, i) => {
+
+                                    if (this.state.driverProfile.Driver.nationality === flag.nationality) {
+                                        return (
+                                            <Flag key={i} country={flag.alpha_2_code} />
+                                        )
+                                    }
+                                    if (this.state.driverProfile.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                        return (
+                                            <Flag key={i} country={flag.alpha_2_code} />
+                                        )
+                                    }
+                                })}
+                            </div>
+
+                            <p>{this.state.driverProfile.Driver.givenName}</p>
+                            <p>{this.state.driverProfile.Driver.familyName}</p>
+
                         </div>
 
                     </div>
                     <div className="driversText">
-                    <table>
+                        <table>
                             <tbody>
                                 <tr>
                                     <td>Nationality</td>
@@ -94,24 +112,58 @@ export default class DriverDetails extends React.Component {
                             </tr>
                             <tr>
                                 <th>Round</th>
-                                <th>Grand Prix</th>
+                                <th colSpan="2">Grand Prix</th>
                                 <th>Team</th>
                                 <th>Grid</th>
                                 <th>Race</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {this.state.driversRaces.map((item, i) =>{
-                            return(
-                                <tr key={i}>
-                                    <td>{item.round}</td>
-                                    <td>{item.raceName}</td>
-                                    <td>{item.Results[0].Constructor.name}</td>
-                                    <td>{item.Results[0].grid}</td> 
-                                    <td>{item.Results[0].position}</td>
-                                </tr>
-                            )
-                        })}
+                            {this.state.driversRaces.map((item, i) => {
+                                console.log(item.Circuit.Location.country);
+                                console.log((item.Circuit.Location.country).length);
+                                return (
+                                    <tr key={i}>
+                                        <td>{item.round}</td>
+                             {/* UBACITI IF ZA ZASTAVE */}
+                                        {this.state.flags.map((flag, i) => {
+
+                                            // if (item.Circuit.Location.country === flag.en_short_name) {
+                                            //     return (
+                                            //         <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                            //     )
+                                            // }
+                                           
+                                            // if ((item.Circuit.Location.country).length === 3){
+                                            //     if(item.Circuit.Location.country ===  flag.alpha_3_code)
+                                            //     return(
+                                            //         <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                            //     )
+                                            // }
+                                     //POKUŠAJ SWITCHa       
+                                            // switch (item.Circuit.Location.country) {
+                                            //     case "USA":
+                                            //         <td key={i}><Flag country="US" /> </td>
+                                            //         break ;
+                                                
+                                            //     default:
+                                            //         if (item.Circuit.Location.country === flag.en_short_name) {
+                                            //                 return (
+                                            //                     <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                            //                 )
+                                            //             }
+                                            //         break;
+                                            // }
+                                            
+                                        
+                                        })}
+                                        <td>{item.raceName}</td>
+                                        <td>{item.Results[0].Constructor.name}</td>
+                                        <td>{item.Results[0].grid}</td>
+                                        <td>{item.Results[0].position}</td>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
 

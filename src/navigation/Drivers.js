@@ -2,63 +2,73 @@ import React from "react";
 import * as $ from "jquery";
 import { Link } from "react-router-dom";
 import Flag from 'react-flagkit';
+import { map } from "jquery";
 
 export default class Drivers extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            driversState: []
-
+            driversState: [],
+            flags: []
         }
-
-        this.driverDetails = this.driverDetails.bind(this);
     }
 
     componentDidMount() {
         this.getPosts();
     }
-
-
-    // getPosts() {
-    //     var url = "http://ergast.com/api/f1/2013/driverStandings.json";
-    //     $.get(url, (data) => {
-    //         // console.log(data)
-    //         const {MRData: {StandingsTable : {StandingsLists : [first]}}} = data;
-    //         // console.log(first);
-    //         const{DriverStandings : driversData} = first;
-    //         this.setState({ driversState: driversData});
-    //     });
-
-    // }
+   
     getPosts() {
-        var url = "http://ergast.com/api/f1/2013/driverStandings.json";
-        $.get(url, (data) => {
+        var url = $.ajax("http://ergast.com/api/f1/2013/driverStandings.json");
+        var urlFlags= $.ajax("https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json");
 
-            this.setState({ driversState: data.MRData.StandingsTable.StandingsLists[0].DriverStandings });
-        });
+        $.when(url, urlFlags).done( function(data1, data2)  {
+            console.log("data1", data1);
+            console.log("data2", data2[0]);
+            var flags = JSON.parse(data2[0]);
+            this.setState({ 
+                driversState: data1[0].MRData.StandingsTable.StandingsLists[0].DriverStandings,
+                flags: flags
+            });
+        }.bind(this));
 
     }
-    driverDetails() { 
-        console.log("from driverDetails");
-    }
-
+    
     render() {
-
+console.log(this.state.flags);
+console.log(typeof this.state.flags)
         return (
             <div className="mainScreen">
-               <Flag  country = "GB" />
                 <table>
                     <thead>
                         <tr>
-                            <th colSpan="4">Drivers Championshim Standings -2013 </th>
+                            <th colSpan="5">Drivers Championshim Standings -2013 </th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.driversState.map((item, i) => {
+                            console.log(item.Driver.nationality)
                             return (
                                 <tr key={i}>
                                     <td>{item.position}</td>
+                                    {this.state.flags.map((flag, i) =>{
+
+                                        if(item.Driver.nationality === flag.nationality){
+                                            return(
+                                               <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+                                            )
+                                        }
+                                        if(item.Driver.nationality === "British" && flag.nationality === "British, UK"){
+                                            return(
+                                               <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+                                            )
+                                        }
+                                        if(item.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic"){
+                                            return(
+                                               <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+                                            )
+                                        } 
+                                    })}
                                     <td><Link to={`/driverDetails/${item.Driver.driverId}`}>{item.Driver.givenName + " " + item.Driver.familyName}</Link></td>
                                     <td>{item.Constructors[0].name}</td>
                                     <td>{item.points}</td>
