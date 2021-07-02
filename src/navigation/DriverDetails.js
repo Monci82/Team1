@@ -1,6 +1,7 @@
 import React from "react";
 import * as $ from "jquery";
 import Flag from "react-flagkit";
+// import drivers from "../../img"
 
 export default class DriverDetails extends React.Component {
     constructor() {
@@ -18,7 +19,6 @@ export default class DriverDetails extends React.Component {
     componentDidMount() {
 
         this.getDriversProfile(this.props.match.params.id);
-
     }
     getDriversProfile(id) {
 
@@ -41,6 +41,7 @@ export default class DriverDetails extends React.Component {
 
         }.bind(this));
     }
+    
 
 
     render() {
@@ -48,15 +49,14 @@ export default class DriverDetails extends React.Component {
             return <h2>LOADING</h2>
 
         }
-        console.log(this.state.driverProfile);
-        console.log(this.state.driversRaces);
-
-
+        // console.log(this.state.driverProfile);
+        // console.log(this.state.driversRaces);
+       
         return (
             <div>
                 <div className="driverInfo">
                     <div className="driversImg">
-                        <img src="" alt="drivers image" />
+                        <img src={`../../img/drivers/${this.state.driverProfile.Driver.givenName}_${this.state.driverProfile.Driver.familyName}.jpg`} alt="drivers image" />
                         <div>
                             <div className="flag">
                                 {this.state.flags.map((flag, i) => {

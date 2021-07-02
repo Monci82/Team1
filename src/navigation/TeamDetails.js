@@ -53,12 +53,12 @@ export default class TeamDetails extends Component {
     console.log(this.state.results);
     // console.log(this.state.teamDetails.Constructor.constructorId);
     // console.log(this.state.TeamDetails);
-    console.log(this.state.results);
+    console.log(this.state.teamDetails.Constructor);
     return (
       <div>
         <div className="driverInfo">
           <div className="driversImg">
-            <img src="" alt="drivers image" />
+            <img src={this.state.teamDetails.Constructor.constructorId==="lotus_f1" ?  `../../img/teams/Lotus.png`: `../../img/teams/${this.state.teamDetails.Constructor.constructorId}.png`} alt="drivers image" />
             <div>
               <div className="flag">
                 {this.state.flags.map((flag, i) => {
