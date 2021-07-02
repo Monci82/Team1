@@ -1,5 +1,6 @@
 import React from "react";
 import * as $ from "jquery";
+import {Link} from "react-router-dom";
 
 export default class Races extends React.Component{
     constructor(){
@@ -34,7 +35,7 @@ export default class Races extends React.Component{
                             return(
                                 <tr key={i}>
                                 <td>{item.round}</td>
-                                <td>{item.raceName}</td>
+                                <td><Link to={`/RacesDetails/${item.round}`}>{item.raceName}</Link></td>
                                 <td>{item.Circuit.circuitName}</td>
                                 <td>{item.date}</td>
                                 <td>{item.Results[0].Driver.familyName}</td>

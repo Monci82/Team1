@@ -6,6 +6,8 @@ import Drivers from "./navigation/Drivers";
 import Races from "./navigation/Races";
 import Teames from "./navigation/Teams";
 import DriverDetails from "./navigation/DriverDetails";
+import TeamDetails from "./navigation/TeamDetails";
+import RacesDetails from "./navigation/RacesDetails";
 
 export default class App extends React.Component {
   render() {
@@ -36,7 +38,10 @@ export default class App extends React.Component {
                 component={DriverDetails}
               />
               <Route path="/teams" exact component={Teames} />
+              <Route path="/TeamDetails/:id" exact component={TeamDetails} />
               <Route path="/races" exact component={Races} />
+              <Route path="/racesDetails/:id" exact component={RacesDetails} />
+
             </Switch>
           </Router>
         </div>
