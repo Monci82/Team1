@@ -146,13 +146,14 @@ export default class RacesDetails extends React.Component {
                             </thead>
                             <tbody>
                                 {this.state.results[0].Results.map((item, i) => {
+                                    console.log(item.Time);
                                     return (
                                         <tr key={i}>
                                             <td>{item.position}</td>
                                             <td>Flag</td>
                                             <td>{item.Driver.familyName}</td>
                                             <td>{item.Constructor.name}</td>
-                                            {/* <td>{item.Time.time}</td> */}
+                                            <td>{item.Time !== undefined ? item.Time.time : ""}</td>
                                             <td>{item.points}</td>
 
                                         </tr>
