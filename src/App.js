@@ -9,33 +9,26 @@ import DriverDetails from "./navigation/DriverDetails";
 import TeamDetails from "./navigation/TeamDetails";
 import RacesDetails from "./navigation/RacesDetails";
 
+
 export default class App extends React.Component {
+  
   render() {
+    console.log(this.state.flags);
     return (
       <div>
         <div className="menu">
           <Router>
             <nav>
-              <div>
-                <Link to="/">Home</Link>
-              </div>
-              <div>
-                <Link to="/drivers">Drivers</Link>
-              </div>
-              <div>
-                <Link to="/teams">Teams</Link>
-              </div>
-              <div>
-                <Link to="/races">Races</Link>
-              </div>
+              <div><Link to="/">Home</Link></div>
+              <div><Link to="/drivers">Drivers</Link></div>
+              <div><Link to="/teams">Teams</Link></div>
+              <div><Link to="/races">Races</Link></div>
             </nav>
+            <div className="mainScreen">
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/drivers" exact component={Drivers} />
-              <Route
-                path="/driverDetails/:id"
-                exact
-                component={DriverDetails}
+              <Route path="/drivers" exact component={Drivers } />
+              <Route path="/driverDetails/:id" exact component={DriverDetails }
               />
               <Route path="/teams" exact component={Teames} />
               <Route path="/TeamDetails/:id" exact component={TeamDetails} />
@@ -43,10 +36,15 @@ export default class App extends React.Component {
               <Route path="/racesDetails/:id" exact component={RacesDetails} />
 
             </Switch>
+            </div>
           </Router>
         </div>
-        <div className="mainScreen"></div>
+        
       </div>
     );
   }
 }
+
+
+{/* Ovo je sintaksa za prosleđivanje stejta kroz Route
+<Route path="/lectures" exact render={() => <Lectures config={this.state.config} />} /> */}

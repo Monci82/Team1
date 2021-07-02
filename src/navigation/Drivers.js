@@ -1,6 +1,7 @@
 import React from "react";
 import * as $ from "jquery";
 import { Link } from "react-router-dom";
+import Flag from 'react-flagkit';
 
 export default class Drivers extends React.Component {
     constructor() {
@@ -46,7 +47,7 @@ export default class Drivers extends React.Component {
 
         return (
             <div className="mainScreen">
-               
+               <Flag  country = "GB" />
                 <table>
                     <thead>
                         <tr>
