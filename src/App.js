@@ -13,7 +13,7 @@ import RacesDetails from "./navigation/RacesDetails";
 export default class App extends React.Component {
   
   render() {
-    console.log(this.state.flags);
+    
     return (
       <div>
         <div className="menu">
