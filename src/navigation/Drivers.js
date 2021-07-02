@@ -63,6 +63,11 @@ console.log(typeof this.state.flags)
                                                <td key={i}><Flag country = {flag.alpha_2_code} /></td>
                                             )
                                         }
+                                        if(item.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic"){
+                                            return(
+                                               <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+                                            )
+                                        } 
                                     })}
                                     <td><Link to={`/driverDetails/${item.Driver.driverId}`}>{item.Driver.givenName + " " + item.Driver.familyName}</Link></td>
                                     <td>{item.Constructors[0].name}</td>
