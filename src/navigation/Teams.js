@@ -1,6 +1,5 @@
 import React from "react";
 import * as $ from "jquery";
-import { timesSeries } from "async";
 import { Link } from "react-router-dom";
 import Flag from "react-flagkit";
 
@@ -47,24 +46,24 @@ export default class Teames extends React.Component {
               return (
                 <tr key={i}>
                   <td>{item.position}</td>
-                  {this.state.flags.map((flag, i) =>{
+                  {this.state.flags.map((flag, i) => {
 
-if(item.Constructor.nationality === flag.nationality){
-    return(
-       <td key={i}><Flag country = {flag.alpha_2_code} /></td>
-    )
-}
-if(item.Constructor.nationality === "British" && flag.nationality === "British, UK"){
-    return(
-       <td key={i}><Flag country = {flag.alpha_2_code} /></td>
-    )
-}
-if(item.Constructor.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic"){
-    return(
-       <td key={i}><Flag country = {flag.alpha_2_code} /></td>
-    )
-} 
-})}
+                    if (item.Constructor.nationality === flag.nationality) {
+                      return (
+                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                      )
+                    }
+                    if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
+                      return (
+                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                      )
+                    }
+                    if (item.Constructor.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
+                      return (
+                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                      )
+                    }
+                  })}
                   <td>
                     <Link to={`/TeamDetails/${item.Constructor.constructorId}`}>
                       {item.Constructor.name}

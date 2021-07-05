@@ -13,8 +13,6 @@ export default class RacesDetails extends React.Component {
             flags: [],
             isLoading: true
         }
-
-
     }
 
     componentDidMount() {
@@ -165,9 +163,6 @@ export default class RacesDetails extends React.Component {
                                             <td>{item.Constructor.name}</td>
                                             <td>{item.Q1}</td>
 
-
-
-
                                         </tr>
                                     )
                                 })}
@@ -232,9 +227,6 @@ export default class RacesDetails extends React.Component {
 
                         </table>
                     </div>
-
-
-
 
                 </div>
 

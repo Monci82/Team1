@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Teams from "./Teams";
 import * as $ from "jquery";
 import Flag from "react-flagkit";
 
@@ -58,7 +57,7 @@ export default class TeamDetails extends Component {
       <div>
         <div className="driverInfo">
           <div className="driversImg">
-            <img src={this.state.teamDetails.Constructor.constructorId==="lotus_f1" ?  `../../img/teams/Lotus.png`: `../../img/teams/${this.state.teamDetails.Constructor.constructorId}.png`} alt="drivers image" />
+            <img src={this.state.teamDetails.Constructor.constructorId === "lotus_f1" ? `../../img/teams/Lotus.png` : `../../img/teams/${this.state.teamDetails.Constructor.constructorId}.png`} alt="drivers image" />
             <div>
               <div className="flag">
                 {this.state.flags.map((flag, i) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import * as $ from "jquery";
 import Flag from "react-flagkit";
-// import drivers from "../../img"
+
 
 export default class DriverDetails extends React.Component {
     constructor() {
@@ -125,7 +125,6 @@ export default class DriverDetails extends React.Component {
                                 return (
                                     <tr key={i}>
                                         <td>{item.round}</td>
-                            {/* IF ZASTAVE POČETAK */}
                                         {this.state.flags.map((flag, i) => {
                                            
                                             if (item.Circuit.Location.country === flag.en_short_name) {
@@ -153,7 +152,7 @@ export default class DriverDetails extends React.Component {
                                                return(<td key={i}><Flag country={flag.alpha_2_code} /></td>)
                                            }
                                         })}
-                     {/*IF ZASTAVE KRAJ  */}
+                     
                                         <td>{item.raceName}</td>
                                         <td>{item.Results[0].Constructor.name}</td>
                                         <td>{item.Results[0].grid}</td>

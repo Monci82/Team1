@@ -2,7 +2,7 @@ import React from "react";
 import * as $ from "jquery";
 import { Link } from "react-router-dom";
 import Flag from 'react-flagkit';
-import { map } from "jquery";
+
 
 export default class Drivers extends React.Component {
     constructor() {
