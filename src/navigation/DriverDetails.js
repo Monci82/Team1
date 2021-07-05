@@ -1,6 +1,8 @@
 import React from "react";
 import * as $ from "jquery";
 import Flag from "react-flagkit";
+import { FlagSpinner } from "react-spinners-kit";
+
 
 export default class DriverDetails extends React.Component {
     constructor() {
@@ -18,7 +20,6 @@ export default class DriverDetails extends React.Component {
     componentDidMount() {
 
         this.getDriversProfile(this.props.match.params.id);
-
     }
     getDriversProfile(id) {
 
@@ -41,22 +42,22 @@ export default class DriverDetails extends React.Component {
 
         }.bind(this));
     }
+    
 
 
     render() {
         if (this.state.isLoading) {
-            return <h2>LOADING</h2>
+            return (<FlagSpinner size={50} color="#00ff89" />)
 
         }
         console.log(this.state.driverProfile);
         console.log(this.state.driversRaces);
-
-
+       
         return (
             <div>
                 <div className="driverInfo">
                     <div className="driversImg">
-                        <img src="" alt="drivers image" />
+                        <img src={`../../img/drivers/${this.state.driverProfile.Driver.givenName}_${this.state.driverProfile.Driver.familyName}.jpg`} alt="drivers image" />
                         <div>
                             <div className="flag">
                                 {this.state.flags.map((flag, i) => {
@@ -125,38 +126,34 @@ export default class DriverDetails extends React.Component {
                                 return (
                                     <tr key={i}>
                                         <td>{item.round}</td>
-                             {/* UBACITI IF ZA ZASTAVE */}
                                         {this.state.flags.map((flag, i) => {
-
-                                            // if (item.Circuit.Location.country === flag.en_short_name) {
-                                            //     return (
-                                            //         <td key={i}><Flag country={flag.alpha_2_code} /></td>
-                                            //     )
-                                            // }
                                            
-                                            // if ((item.Circuit.Location.country).length === 3){
-                                            //     if(item.Circuit.Location.country ===  flag.alpha_3_code)
-                                            //     return(
-                                            //         <td key={i}><Flag country={flag.alpha_2_code} /></td>
-                                            //     )
-                                            // }
-                                     //POKUŠAJ SWITCHa       
-                                            // switch (item.Circuit.Location.country) {
-                                            //     case "USA":
-                                            //         <td key={i}><Flag country="US" /> </td>
-                                            //         break ;
-                                                
-                                            //     default:
-                                            //         if (item.Circuit.Location.country === flag.en_short_name) {
-                                            //                 return (
-                                            //                     <td key={i}><Flag country={flag.alpha_2_code} /></td>
-                                            //                 )
-                                            //             }
-                                            //         break;
-                                            // }
+                                            if (item.Circuit.Location.country === flag.en_short_name) {
+                                                return (
+                                                    <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                )
+                                            }
+                                           if(item.Circuit.Location.country === "UK" && flag.nationality==="British, UK"){
+                                               return(
+                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               )
                                             
-                                        
+                                           }
+                                           if(item.Circuit.Location.country === "Korea" && flag.nationality==="South Korean"){
+                                            return(
+                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               )
+                                           }
+                                           if(item.Circuit.Location.country === "UAE" && flag.nationality==="Emirati, Emirian, Emiri"){
+                                            return(
+                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               )
+                                           }
+                                           if(item.Circuit.Location.country === "USA" && flag.en_short_name==="United States of America"){
+                                               return(<td key={i}><Flag country={flag.alpha_2_code} /></td>)
+                                           }
                                         })}
+                     
                                         <td>{item.raceName}</td>
                                         <td>{item.Results[0].Constructor.name}</td>
                                         <td>{item.Results[0].grid}</td>
