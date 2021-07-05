@@ -45,6 +45,7 @@ console.log(this.state.flags);
 console.log(typeof this.state.flags)
         return (
             <div className="mainScreen">
+                <h1>Driver Championship</h1>
                 <table>
                     <thead>
                         <tr>

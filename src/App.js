@@ -19,15 +19,15 @@ export default class App extends React.Component {
         <div className="menu">
           <Router>
             <nav>
-              <div><Link to="/">Home</Link></div>
-              <div><Link to="/drivers">Drivers</Link></div>
+              {/* <div><Link to="/">Home</Link></div> */}
+              <div><Link to="/">Drivers</Link></div>
               <div><Link to="/teams">Teams</Link></div>
               <div><Link to="/races">Races</Link></div>
             </nav>
             <div className="mainScreen">
             <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/drivers" exact component={Drivers } />
+              {/* <Route path="/" exact component={Home} /> */}
+              <Route path="/" exact component={Drivers } />
               <Route path="/driverDetails/:id" exact component={DriverDetails }
               />
               <Route path="/teams" exact component={Teames} />

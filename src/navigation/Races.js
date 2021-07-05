@@ -41,6 +41,7 @@ export default class Races extends React.Component {
         console.log(this.state.races)
         return (
             <div className="mainScreen">
+                <h1>Race Calendar</h1>
                 <table>
                     <thead>
                         <tr>

@@ -42,10 +42,11 @@ export default class Teames extends React.Component {
     console.log(this.state.teamsState);
     return (
       <div className="mainScreen">
+        <h1>Constructors Championship</h1>
         <table>
           <thead>
             <tr>
-              <th colSpan="5">Constructors Championshim Standings -2013</th>
+              <th colSpan="5">Constructors Championship Standings -2013</th>
             </tr>
           </thead>
           <tbody>
