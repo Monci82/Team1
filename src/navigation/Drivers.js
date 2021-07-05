@@ -2,7 +2,7 @@ import React from "react";
 import * as $ from "jquery";
 import { Link } from "react-router-dom";
 import Flag from 'react-flagkit';
-
+import { FlagSpinner } from "react-spinners-kit";
 
 export default class Drivers extends React.Component {
     constructor() {
@@ -10,7 +10,8 @@ export default class Drivers extends React.Component {
 
         this.state = {
             driversState: [],
-            flags: []
+            flags: [],
+            isLoading: true,
         }
     }
 
@@ -28,13 +29,18 @@ export default class Drivers extends React.Component {
             var flags = JSON.parse(data2[0]);
             this.setState({ 
                 driversState: data1[0].MRData.StandingsTable.StandingsLists[0].DriverStandings,
-                flags: flags
+                flags: flags,
+                isLoading: false
             });
         }.bind(this));
 
     }
     
     render() {
+        if (this.state.isLoading) {
+            return (<FlagSpinner size={50} color="#00ff89" />)
+
+        }
 console.log(this.state.flags);
 console.log(typeof this.state.flags)
         return (

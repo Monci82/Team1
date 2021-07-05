@@ -2,13 +2,15 @@ import React from "react";
 import * as $ from "jquery";
 import { Link } from "react-router-dom";
 import Flag from "react-flagkit";
+import { FlagSpinner } from "react-spinners-kit";
 
 export default class Races extends React.Component {
     constructor() {
         super();
         this.state = {
             races: [],
-            flags: []
+            flags: [],
+            isLoading: true,
         }
     }
     componentDidMount() {
@@ -24,13 +26,18 @@ export default class Races extends React.Component {
             var flags = JSON.parse(data2[0]);
             this.setState({
                 races: data1[0].MRData.RaceTable.Races,
-                flags: flags
+                flags: flags,
+                isLoading: false
             });
         }.bind(this));
 
     }
 
     render() {
+        if (this.state.isLoading) {
+            return (<FlagSpinner size={50} color="#00ff89" />)
+
+        }
         console.log(this.state.races)
         return (
             <div className="mainScreen">

@@ -2,13 +2,15 @@ import React from "react";
 import * as $ from "jquery";
 import { Link } from "react-router-dom";
 import Flag from "react-flagkit";
+import { FlagSpinner } from "react-spinners-kit";
 
 export default class Teames extends React.Component {
   constructor() {
     super();
     this.state = {
       teamsState: [],
-      flags: []
+      flags: [],
+      isLoading: true,
     };
   }
   componentDidMount() {
@@ -25,13 +27,18 @@ export default class Teames extends React.Component {
       this.setState({
         teamsState:
           data1[0].MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
-        flags: flags
+        flags: flags,
+        isLoading: false
       });
     }.bind(this));
 
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (<FlagSpinner size={50} color="#00ff89" />)
+
+  }
     console.log(this.state.teamsState);
     return (
       <div className="mainScreen">

@@ -1,6 +1,7 @@
 import React from "react";
 import * as $ from "jquery";
 import Flag from "react-flagkit";
+import { FlagSpinner } from "react-spinners-kit";
 
 
 export default class RacesDetails extends React.Component {
@@ -50,7 +51,8 @@ export default class RacesDetails extends React.Component {
     render() {
         console.log(this.state.results[0])
         if (this.state.isLoading) {
-            return <h2>Loading</h2>
+            return (<FlagSpinner size={50} color="#00ff89" />)
+
         }
 
         return (

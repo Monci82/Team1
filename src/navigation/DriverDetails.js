@@ -1,6 +1,7 @@
 import React from "react";
 import * as $ from "jquery";
 import Flag from "react-flagkit";
+import { FlagSpinner } from "react-spinners-kit";
 
 
 export default class DriverDetails extends React.Component {
@@ -46,11 +47,11 @@ export default class DriverDetails extends React.Component {
 
     render() {
         if (this.state.isLoading) {
-            return <h2>LOADING</h2>
+            return (<FlagSpinner size={50} color="#00ff89" />)
 
         }
-        // console.log(this.state.driverProfile);
-        // console.log(this.state.driversRaces);
+        console.log(this.state.driverProfile);
+        console.log(this.state.driversRaces);
        
         return (
             <div>
