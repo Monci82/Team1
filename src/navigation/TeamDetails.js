@@ -48,9 +48,11 @@ export default class TeamDetails extends Component {
   }
   render() {
     if (this.state.isLoading) {
-      return (<FlagSpinner size={50} color="#00ff89" />)
-
-  }
+      return (
+          <div className="spiner">
+            <FlagSpinner color={"#333"} />
+            </div>
+        );}
     console.log(this.state.results);
     // console.log(this.state.teamDetails.Constructor.constructorId);
     // console.log(this.state.TeamDetails);

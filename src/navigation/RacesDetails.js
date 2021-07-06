@@ -51,9 +51,11 @@ export default class RacesDetails extends React.Component {
     render() {
         console.log(this.state.results[0])
         if (this.state.isLoading) {
-            return (<FlagSpinner size={50} color="#00ff89" />)
-
-        }
+            return (
+                <div className="spiner">
+                  <FlagSpinner color={"#333"} />
+                  </div>
+              );}
 
         return (
             <div>
