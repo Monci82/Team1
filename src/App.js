@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Link, Switch } from "react-router-dom";
 import "../sass/style.scss";
 import Home from "./navigation/Home";
 import Drivers from "./navigation/Drivers";
@@ -18,12 +18,17 @@ export default class App extends React.Component {
       <div>
         <div className="menu">
           <Router>
+            
+          <div className="leftSide">
+            <Link to="/"><img  className="f1Img" src="../img/pravilogo.jpg" /></Link>
+  {/* Promenjen Link uNavLink i dodata aktiv klasa*/}
             <nav>
               {/* <div><Link to="/">Home</Link></div> */}
-              <div><Link to="/">Drivers</Link></div>
-              <div><Link to="/teams">Teams</Link></div>
-              <div><Link to="/races">Races</Link></div>
+              <div><NavLink className="link" activeClassName="navActiveLink" exact to="/"><img className="menuImg" src={"../img/helmet.png"}/>Drivers</NavLink></div>
+              <div><NavLink className="link" activeClassName="navActiveLink" exact to="/teams"><div><img className="menuImg" src={"../img/timovi.png"}/><img className="menuImg formula" src={"../img/timovi.png"}/></div>Teams</NavLink></div>
+              <div><NavLink className="link" activeClassName="navActiveLink" exact to="/races"><img className="menuImg" src={"../img/checkered-flag.png"}/>Races</NavLink></div>
             </nav>
+            </div>
             <div className="mainScreen">
             <Switch>
               {/* <Route path="/" exact component={Home} /> */}

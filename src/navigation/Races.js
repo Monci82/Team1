@@ -35,9 +35,11 @@ export default class Races extends React.Component {
 
     render() {
         if (this.state.isLoading) {
-            return (<FlagSpinner size={50} color="#00ff89" />)
-
-        }
+            return (
+                <div className="spiner">
+                  <FlagSpinner color={"#333"} />
+                  </div>
+              );}
         console.log(this.state.races)
         return (
             <div className="mainScreen">
