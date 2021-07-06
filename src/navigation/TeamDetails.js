@@ -58,10 +58,12 @@ export default class TeamDetails extends Component {
     // console.log(this.state.TeamDetails);
     console.log(this.state.teamDetails.Constructor);
     return (
-      <div>
+      <div className="rightSide">
         <div className="driverInfo">
+          <div className="imageData">
           <div className="driversImg">
             <img src={this.state.teamDetails.Constructor.constructorId === "lotus_f1" ? `../../img/teams/Lotus.png` : `../../img/teams/${this.state.teamDetails.Constructor.constructorId}.png`} alt="drivers image" />
+            </div>
             <div>
               <div className="flag">
                 {this.state.flags.map((flag, i) => {
@@ -80,7 +82,8 @@ export default class TeamDetails extends Component {
               </div>
 
               <p>{this.state.teamDetails.Constructor.name}</p>
-            </div>
+              </div>
+            
           </div>
           <div className="driversText">
             <table>
@@ -100,8 +103,8 @@ export default class TeamDetails extends Component {
                 <tr>
                   <td>History: </td>
                   <td>
-                    <a href={this.state.teamDetails.Constructor.url}>ICO</a>
-                  </td>
+                    <a href={this.state.teamDetails.Constructor.url} target="_blank"><i class="fas fa-external-link-alt" ></i></a>
+                  </td> 
                 </tr>
               </tbody>
             </table>

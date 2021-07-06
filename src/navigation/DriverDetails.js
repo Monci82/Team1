@@ -84,6 +84,7 @@ export default class DriverDetails extends React.Component {
                             <p>{this.state.driverProfile.Driver.familyName}</p>
 
                         </div>
+                        
 
                     </div>
                     <div className="driversText">

@@ -58,7 +58,7 @@ export default class RacesDetails extends React.Component {
               );}
 
         return (
-            <div>
+            <div className="rightSide">
                 <div className="driverInfo">
                     
                     
@@ -66,32 +66,32 @@ export default class RacesDetails extends React.Component {
                                            
                                            if (this.state.results[0].Circuit.Location.country === flag.en_short_name) {
                                                return (
-                                                   <td className="driverImg" key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                   <td className="driversImg" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                )
                                            }
                                           if(this.state.results[0].Circuit.Location.country === "UK" && flag.nationality==="British, UK"){
                                               return(
-                                               <td className="driverImg" key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               <td className="driversImg" key={i}><Flag country={flag.alpha_2_code} /></td>
                                               )
                                            
                                           }
                                           if(this.state.results[0].Circuit.Location.country === "Korea" && flag.nationality==="South Korean"){
                                            return(
-                                               <td className="driverImg" key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               <td className="driversImg" key={i}><Flag country={flag.alpha_2_code} /></td>
                                               )
                                           }
                                           if(this.state.results[0].Circuit.Location.country === "UAE" && flag.nationality==="Emirati, Emirian, Emiri"){
                                            return(
-                                               <td className="driverImg" key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               <td className="driversImg" key={i}><Flag country={flag.alpha_2_code} /></td>
                                               )
                                           }
                                           if(this.state.results[0].Circuit.Location.country === "USA" && flag.en_short_name==="United States of America"){
-                                              return(<td className="driverImg" key={i}><Flag country={flag.alpha_2_code} /></td>)
+                                              return(<td className="driversImg" key={i}><Flag country={flag.alpha_2_code} /></td>)
                                           }
                                        })}
                     
-                    <p>{this.state.results[0].Circuit.circuitName}</p>
-                    <div>
+                    <p className="racesName">{this.state.results[0].Circuit.circuitName}</p>
+                    <div className="driversText">
                         <table>
                             <tbody>
                                 <tr>
@@ -112,7 +112,7 @@ export default class RacesDetails extends React.Component {
                                 </tr>
                                 <tr>
                                     <td>Full report:</td>
-                                    <td><a href={this.state.results[0].url}>ICO</a></td>
+                                    <td><a href={this.state.results[0].url} target="_blank"><i class="fas fa-external-link-alt" ></i></a></td>
 
                                 </tr>
                             </tbody>
@@ -120,9 +120,9 @@ export default class RacesDetails extends React.Component {
                     </div>
                 </div>
 
-                <div>
+                <div className="twoTables">
 
-                    <div className="driversInfoTable">
+                    <div className="driversInfoTableQR">
                         <table>
                             <thead>
                                 <tr>
@@ -176,12 +176,12 @@ export default class RacesDetails extends React.Component {
                     </div>
 
 
-                    <div className="driversInfoTable">
+                    <div className="driversInfoTableRR">
 
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Race Results</th>
+                                    <th colSpan="6">Race Results</th>
                                 </tr>
 
                                 <tr>
