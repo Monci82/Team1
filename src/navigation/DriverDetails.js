@@ -132,31 +132,31 @@ export default class DriverDetails extends React.Component {
                                            
                                             if (item.Circuit.Location.country === flag.en_short_name) {
                                                 return (
-                                                    <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                    <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                 )
                                             }
                                            if(item.Circuit.Location.country === "UK" && flag.nationality==="British, UK"){
                                                return(
-                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                )
                                             
                                            }
                                            if(item.Circuit.Location.country === "Korea" && flag.nationality==="South Korean"){
                                             return(
-                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                )
                                            }
                                            if(item.Circuit.Location.country === "UAE" && flag.nationality==="Emirati, Emirian, Emiri"){
                                             return(
-                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                )
                                            }
                                            if(item.Circuit.Location.country === "USA" && flag.en_short_name==="United States of America"){
-                                               return(<td key={i}><Flag country={flag.alpha_2_code} /></td>)
+                                               return(<td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>)
                                            }
                                         })}
                      
-                                        <td>{item.raceName}</td>
+                                        <td className="leftBorder">{item.raceName}</td>
                                         <td>{item.Results[0].Constructor.name}</td>
                                         <td>{item.Results[0].grid}</td>
                                         <td>{item.Results[0].position}</td>

@@ -46,7 +46,7 @@ export default class Drivers extends React.Component {
 console.log(this.state.flags);
 console.log(typeof this.state.flags)
         return (
-            <div className="mainScreen">
+            <div>
                 <h1>Driver Championship</h1>
                 <table>
                     <thead>
@@ -64,21 +64,21 @@ console.log(typeof this.state.flags)
 
                                         if(item.Driver.nationality === flag.nationality){
                                             return(
-                                               <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+                                               <td className="flagTable" key={i}><Flag country = {flag.alpha_2_code} /></td>
                                             )
                                         }
                                         if(item.Driver.nationality === "British" && flag.nationality === "British, UK"){
                                             return(
-                                               <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+                                               <td className="flagTable" key={i}><Flag country = {flag.alpha_2_code} /></td>
                                             )
                                         }
                                         if(item.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic"){
                                             return(
-                                               <td key={i}><Flag country = {flag.alpha_2_code} /></td>
+                                               <td className="flagTable" key={i}><Flag country = {flag.alpha_2_code} /></td>
                                             )
                                         } 
                                     })}
-                                    <td><Link to={`/driverDetails/${item.Driver.driverId}`}>{item.Driver.givenName + " " + item.Driver.familyName}</Link></td>
+                                    <td className="leftBorder"><Link to={`/driverDetails/${item.Driver.driverId}`}>{item.Driver.givenName + " " + item.Driver.familyName}</Link></td>
                                     <td>{item.Constructors[0].name}</td>
                                     <td>{item.points}</td>
                                 </tr>

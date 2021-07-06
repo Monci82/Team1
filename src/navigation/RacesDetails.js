@@ -149,21 +149,21 @@ export default class RacesDetails extends React.Component {
 
                                                 if (item.Driver.nationality === flag.nationality) {
                                                     return (
-                                                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                     )
                                                 }
                                                 if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
                                                     return (
-                                                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                     )
                                                 }
                                                 if (item.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
                                                     return (
-                                                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                     )
                                                 }
                                             })}
-                                            <td>{item.Driver.familyName}</td>
+                                            <td className="leftBorder">{item.Driver.familyName}</td>
                                             <td>{item.Constructor.name}</td>
                                             <td>{item.Q1}</td>
 
@@ -186,7 +186,7 @@ export default class RacesDetails extends React.Component {
 
                                 <tr>
                                     <th>Position</th>
-                                    <th>Driver</th>
+                                    <th colSpan="2">Driver</th>
                                     <th>Team</th>
                                     <th>Results</th>
                                     <th>Points</th>
@@ -203,21 +203,21 @@ export default class RacesDetails extends React.Component {
 
                                                 if (item.Driver.nationality === flag.nationality) {
                                                     return (
-                                                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                     )
                                                 }
                                                 if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
                                                     return (
-                                                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                     )
                                                 }
                                                 if (item.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
                                                     return (
-                                                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                     )
                                                 }
                                             })}
-                                            <td>{item.Driver.familyName}</td>
+                                            <td className="leftBorder">{item.Driver.familyName}</td>
                                             <td>{item.Constructor.name}</td>
                                             <td>{item.Time !== undefined ? item.Time.time : ""}</td>
                                             <td>{item.points}</td>

@@ -43,7 +43,7 @@ export default class Teames extends React.Component {
         );}
     console.log(this.state.teamsState);
     return (
-      <div className="mainScreen">
+      <div>
         <h1>Constructors Championship</h1>
         <table>
           <thead>
@@ -60,21 +60,21 @@ export default class Teames extends React.Component {
 
                     if (item.Constructor.nationality === flag.nationality) {
                       return (
-                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                       )
                     }
                     if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
                       return (
-                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                       )
                     }
                     if (item.Constructor.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
                       return (
-                        <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                        <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                       )
                     }
                   })}
-                  <td>
+                  <td className="leftBorder">
                     <Link to={`/TeamDetails/${item.Constructor.constructorId}`}>
                       {item.Constructor.name}
                     </Link>

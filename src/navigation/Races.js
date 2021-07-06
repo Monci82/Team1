@@ -42,7 +42,7 @@ export default class Races extends React.Component {
               );}
         console.log(this.state.races)
         return (
-            <div className="mainScreen">
+            <div>
                 <h1>Race Calendar</h1>
                 <table>
                     <thead>
@@ -60,51 +60,51 @@ export default class Races extends React.Component {
                                            
                                            if (item.Circuit.Location.country === flag.en_short_name) {
                                                return (
-                                                   <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                   <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                )
                                            }
                                           if(item.Circuit.Location.country === "UK" && flag.nationality==="British, UK"){
                                               return(
-                                               <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                               )
                                            
                                           }
                                           if(item.Circuit.Location.country === "Korea" && flag.nationality==="South Korean"){
                                            return(
-                                               <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                               )
                                           }
                                           if(item.Circuit.Location.country === "UAE" && flag.nationality==="Emirati, Emirian, Emiri"){
                                            return(
-                                               <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                               <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                               )
                                           }
                                           if(item.Circuit.Location.country === "USA" && flag.en_short_name==="United States of America"){
-                                              return(<td key={i}><Flag country={flag.alpha_2_code} /></td>)
+                                              return(<td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>)
                                           }
                                        })}
-                                    <td><Link to={`/RacesDetails/${item.round}`}>{item.raceName}</Link></td>
+                                    <td className="leftBorder"><Link to={`/RacesDetails/${item.round}`}>{item.raceName}</Link></td>
                                     <td>{item.Circuit.circuitName}</td>
                                     <td>{item.date}</td>
                                     {this.state.flags.map((flag, i) => {
 
                                         if (item.Results[0].Driver.nationality === flag.nationality) {
                                             return (
-                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                             )
                                         }
                                         if (item.Results[0].Driver.nationality === "British" && flag.nationality === "British, UK") {
                                             return (
-                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                             )
                                         }
                                         if (item.Results[0].Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
                                             return (
-                                                <td key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                             )
                                         }
                                     })}
-                                    <td>{item.Results[0].Driver.familyName}</td>
+                                    <td className="leftBorder">{item.Results[0].Driver.familyName}</td>
                                 </tr>
                             )
                         })}
