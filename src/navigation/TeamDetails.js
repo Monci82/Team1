@@ -50,7 +50,7 @@ export default class TeamDetails extends Component {
     if (this.state.isLoading) {
       return (
           <div className="spiner">
-            <FlagSpinner color={"#333"} />
+            <FlagSpinner color="#fff" size={100} />
             </div>
         );}
     console.log(this.state.results);

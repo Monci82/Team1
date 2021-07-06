@@ -38,7 +38,7 @@ export default class Teames extends React.Component {
     if (this.state.isLoading) {
       return (
           <div className="spiner">
-            <FlagSpinner color={"#333"} />
+            <FlagSpinner color="#fff" size={100} />
             </div>
         );}
     console.log(this.state.teamsState);
@@ -80,7 +80,7 @@ export default class Teames extends React.Component {
                     </Link>
                   </td>
                   <td>
-                    <a href={item.Constructor.url}>Details</a>
+                    <a href={item.Constructor.url} target="_blank">Details<i class="fas fa-external-link-alt" ></i></a>
                   </td>
                   <td>{item.points}</td>
                 </tr>

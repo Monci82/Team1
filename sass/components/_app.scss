@@ -79,19 +79,55 @@ nav{
 //spiner
 .spiner{
     
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
+    transform: translate(-10%, -50%);
 }
 // aktiv klasa
 .navActiveLink{
     background-color: $imgHoverColor;
 }
 
+.rightSide{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
 
+
+}
+.driverInfo{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    .imageData{
+        display: flex;
+        flex-direction: row;
+
+        p, .flag{
+            padding: 3px 0 3px 10px;
+            color: $menuTextColor;
+            font-size: 1.2rem;
+            font-weight: bold;
+
+        }
+    }
+    .driversImg{
+       
+        width: 40%;
+        height: 100px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            
+        }
+    }
+}
+
+.driversInfoTable{
+    width: 79%;
+}
 
 
 

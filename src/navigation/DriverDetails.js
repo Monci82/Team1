@@ -42,24 +42,27 @@ export default class DriverDetails extends React.Component {
 
         }.bind(this));
     }
-    
+
 
 
     render() {
         if (this.state.isLoading) {
             return (
                 <div className="spiner">
-                  <FlagSpinner color={"#333"} />
-                  </div>
-              );}
+                    <FlagSpinner color="#fff" size={100}/>
+                </div>
+            );
+        }
         console.log(this.state.driverProfile);
         console.log(this.state.driversRaces);
-       
+
         return (
-            <div>
+            <div className="rightSide">
                 <div className="driverInfo">
-                    <div className="driversImg">
-                        <img src={`../../img/drivers/${this.state.driverProfile.Driver.givenName}_${this.state.driverProfile.Driver.familyName}.jpg`} alt="drivers image" />
+                    <div className="imageData">
+                        <div className="driversImg">
+                            <img src={`../../img/drivers/${this.state.driverProfile.Driver.givenName}_${this.state.driverProfile.Driver.familyName}.jpg`} alt="drivers image" />
+                        </div>
                         <div>
                             <div className="flag">
                                 {this.state.flags.map((flag, i) => {
@@ -87,7 +90,7 @@ export default class DriverDetails extends React.Component {
                         <table>
                             <tbody>
                                 <tr>
-                                    <td>Nationality</td>
+                                    <td>Country:</td>
                                     <td>{this.state.driverProfile.Driver.nationality}</td>
                                 </tr>
                                 <tr>
@@ -100,7 +103,7 @@ export default class DriverDetails extends React.Component {
                                 </tr>
                                 <tr>
                                     <td>Biography:</td>
-                                    <td><a href={this.state.driverProfile.Driver.url}>ICO</a></td>
+                                    <td><a href={this.state.driverProfile.Driver.url} target="_blank"><i class="fas fa-external-link-alt" ></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -129,33 +132,33 @@ export default class DriverDetails extends React.Component {
                                     <tr key={i}>
                                         <td>{item.round}</td>
                                         {this.state.flags.map((flag, i) => {
-                                           
+
                                             if (item.Circuit.Location.country === flag.en_short_name) {
                                                 return (
                                                     <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
                                                 )
                                             }
-                                           if(item.Circuit.Location.country === "UK" && flag.nationality==="British, UK"){
-                                               return(
-                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
-                                               )
-                                            
-                                           }
-                                           if(item.Circuit.Location.country === "Korea" && flag.nationality==="South Korean"){
-                                            return(
-                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
-                                               )
-                                           }
-                                           if(item.Circuit.Location.country === "UAE" && flag.nationality==="Emirati, Emirian, Emiri"){
-                                            return(
-                                                <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
-                                               )
-                                           }
-                                           if(item.Circuit.Location.country === "USA" && flag.en_short_name==="United States of America"){
-                                               return(<td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>)
-                                           }
+                                            if (item.Circuit.Location.country === "UK" && flag.nationality === "British, UK") {
+                                                return (
+                                                    <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                )
+
+                                            }
+                                            if (item.Circuit.Location.country === "Korea" && flag.nationality === "South Korean") {
+                                                return (
+                                                    <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                )
+                                            }
+                                            if (item.Circuit.Location.country === "UAE" && flag.nationality === "Emirati, Emirian, Emiri") {
+                                                return (
+                                                    <td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>
+                                                )
+                                            }
+                                            if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                                                return (<td className="flagTable" key={i}><Flag country={flag.alpha_2_code} /></td>)
+                                            }
                                         })}
-                     
+
                                         <td className="leftBorder">{item.raceName}</td>
                                         <td>{item.Results[0].Constructor.name}</td>
                                         <td>{item.Results[0].grid}</td>

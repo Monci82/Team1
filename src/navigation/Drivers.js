@@ -40,7 +40,7 @@ export default class Drivers extends React.Component {
         if (this.state.isLoading) {
             return (
                 <div className="spiner">
-                  <FlagSpinner color={"#333"} />
+                  <FlagSpinner color="#fff" size={100} />
                   </div>
               );}
 console.log(this.state.flags);

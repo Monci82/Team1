@@ -1,36 +1,6 @@
-// .menu {
-//     display: flex;
-
-
-//     background-color: $greyColor;
-//     min-height: 100vh;
-    
-
-
-//         img{max-width: 300px;
-//             max-height: 220px;}
-// }
-
-
-
-// .sideBar {
-//     background-color: maroon;
-//     width: 15%;
-
-
-//     div{
-//         padding: 10px;
-//         margin: 15px;
-//     }
-
-//     a{
-//         text-decoration: none;
-//         font-family: $f1Font;
-//         color: white;
-
-//     }
-// }
-
+body{
+    font-family: $bodyFont;
+}
 
 .mainScreen{
     display: flex;
@@ -60,7 +30,7 @@ float: right;
         background-color: white;
         border-radius: 10px;
         width: 95%;
-
+        
 
             th{
                 padding: 10px;
@@ -98,7 +68,12 @@ float: right;
         
             a{
                 text-decoration: none;
-                color: black
+                color: black;
+
+                i{
+                    color: $linkColor;
+                    padding-left: 10px;
+                }
             }
 
 
@@ -113,8 +88,28 @@ float: right;
     .leftBorder{
         border-left: none;
     }
+    .driversText table{
+        margin-top: 15px;
+        background-color: transparent;
+        width: 100%;
+        border-radius: none;
+        border: none;
+
+        tr:nth-child(even), td{
+            background-color: transparent;
+            border: none;
+            color: $menuTextColor;
+            padding: 5px;
+        }
+    }
 
 
+}
+.flag img{
+    width: 40px;
+    border-radius: 10px;
+    display: block;
+    
 }
 
 
