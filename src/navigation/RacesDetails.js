@@ -47,6 +47,51 @@ export default class RacesDetails extends React.Component {
 
 
     }
+    positionColor(position){
+        var color = "";
+         switch (position) {
+     
+             case "1":
+                 color = "yellow";
+                 break;
+                 case "1":
+                     color = "yellow";
+                     break;
+                 case "2":
+                 color = "gray";
+                 break;
+                 case "3":
+                 color = "orange";
+                 break;
+                 case "4":
+                 color = "lightGreen";
+                 break;
+                 case "5":
+                 color = "lightBlue";
+                 break;
+                 case "6":
+                 color = "pink";
+                 break;
+                 case "7":
+                 color = "aquamarine";
+                 break;
+                 case "8":
+                 color = "bisque";
+                 break;
+                 case "9":
+                 color = "darkkhaki";
+                 break;
+                 case "10":
+                 color = "lightpink";
+                 break;
+             default:
+                 color = "none";
+                 break;
+         }
+         return(
+            color
+        )
+     }
 
     render() {
         console.log(this.state.results[0])
@@ -220,7 +265,7 @@ export default class RacesDetails extends React.Component {
                                             <td className="leftBorder">{item.Driver.familyName}</td>
                                             <td>{item.Constructor.name}</td>
                                             <td>{item.Time !== undefined ? item.Time.time : ""}</td>
-                                            <td>{item.points}</td>
+                                            <td style={{backgroundColor: this.positionColor(item.position)}}>{item.points}</td>
 
                                         </tr>
                                     )

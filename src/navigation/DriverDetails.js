@@ -42,7 +42,51 @@ export default class DriverDetails extends React.Component {
 
         }.bind(this));
     }
-
+    positionColor(position){
+        var color = "";
+         switch (position) {
+     
+             case "1":
+                 color = "yellow";
+                 break;
+                 case "1":
+                     color = "yellow";
+                     break;
+                 case "2":
+                 color = "gray";
+                 break;
+                 case "3":
+                 color = "orange";
+                 break;
+                 case "4":
+                 color = "lightGreen";
+                 break;
+                 case "5":
+                 color = "lightBlue";
+                 break;
+                 case "6":
+                 color = "pink";
+                 break;
+                 case "7":
+                 color = "aquamarine";
+                 break;
+                 case "8":
+                 color = "bisque";
+                 break;
+                 case "9":
+                 color = "darkkhaki";
+                 break;
+                 case "10":
+                 color = "lightpink";
+                 break;
+             default:
+                 color = "none";
+                 break;
+         }
+         return(
+            color
+        )
+     }
 
 
     render() {
@@ -163,7 +207,7 @@ export default class DriverDetails extends React.Component {
                                         <td className="leftBorder">{item.raceName}</td>
                                         <td>{item.Results[0].Constructor.name}</td>
                                         <td>{item.Results[0].grid}</td>
-                                        <td>{item.Results[0].position}</td>
+                                        <td style={{backgroundColor: this.positionColor(item.Results[0].position)}}>{item.Results[0].position}</td>
                                     </tr>
                                 )
                             })}
