@@ -160,6 +160,83 @@ nav{
     width: 58%;
 }
 
+@media screen and (max-width: 1200px) {
 
+
+    .rightSide, .driversInfoTableQR, .driversInfoTableRR {
+    
+        width: 100%;
+
+        
+    }
+
+    .driverInfo {
+        max-width: 50%;
+    }
+
+    .rightSide, .twoTables {
+
+        display: flex;
+        flex-direction: column;
+    }
+    
+        
+    }
+
+@media screen and ( max-width: 768px) {
+    
+    .mainScreen {
+        width: 100% !important;
+
+    }
+    .menu {
+
+        width: 100%;
+        height: 50px;
+        min-height: 50px;
+        display: inline-block;
+
+    }
+
+    .rightSide {
+        width: 100%;
+        
+    }
+    .leftSide {
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        // height: 250px;
+
+        .f1Img {
+            display: inline-block;
+            height: 250px;
+            width: 30%;
+            position: relative;   
+        }
+
+        nav {
+            position: absolute;
+            left: 30%;
+            top: 0;
+        }
+
+        nav .link {
+            display: inline-block;
+            width: 70%;
+            height: 50px;
+               
+        }
+        
+    
+
+        
+
+    }
+    
+
+    
+    
+}
 
 
