@@ -224,19 +224,65 @@ nav{
         nav .link {
             display: inline-block;
             width: 70%;
-            height: 50px;
+            height: 75px;
+            line-height: 75px;
                
         }
         
+    }  
     
+}
 
+@media screen and ( max-width: 576px) {
+
+    
+    .leftSide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leftSide {
+        
+        nav  {
+
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        .link {
+
+            width: 100%;
+            
+        }
+
+        }
+       
         
 
     }
-    
 
-    
-    
+    .leftSide .f1Img {
+        width: 100%;
+    }
+
+    a.f1Img {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        
+    }
+
+    a.link.navActiveLink {
+        width: 100%;
+    }
+    a.link {
+        width: 100%;
+    }
+      
+
 }
+
+
 
 
